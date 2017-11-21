@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Show A User</title>
+</head>
+<body>
+<a href="/list">List of All users</a><br/>
+
+Email:<span th:text="${user.email}"></span><br/>
+
+Enabled: <span th:text="${user.enabled}"></span><br/>
+
+FirstName: <span th:text="${user.firstName}"></span><br/>
+
+LastName: <span th:text="${user.lastName}"></span><br/>
+
+UserName:<span th:text="${user.username}"></span><br/>
+
+Password:<span th:text="${user.password}"></span><br/>
+
+<a th:href="@{/delete/{id}(id=${user.id})}">Delete this User</a>
+
+</body>
+</html>

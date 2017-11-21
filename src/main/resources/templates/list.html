@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lists of users</title>
+</head>
+<body>
+
+<a href="/register" >Register Another User</a><br/>
+
+
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Enabled</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>UserName</th>
+    </tr>
+
+    <tr th:each="user :${users}">
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.enabled}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.username}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${user.id})}">Update</a>-
+            <a th:href="@{/detail/{id}(id=${user.id}) }">Details</a>-
+            <a th:href="@{/delete/{id}(id=${user.id})}">Delete</a>
+        </td>
+    </tr>
+
+
+</table>
+
+</body>
+</html>
