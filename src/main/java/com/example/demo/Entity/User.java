@@ -1,8 +1,8 @@
 package com.example.demo.Entity;
 
-import javax.management.relation.Role;
+
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -34,7 +34,7 @@ public class User {
     @ManyToMany(fetch= FetchType.EAGER)
 
     @JoinTable(joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="role_id"))
-    private Collection<UserRole> roles;
+    private Set<UserRole> roles;
 
     public User() {
     }
@@ -104,11 +104,11 @@ public class User {
         this.username = username;
     }
 
-    public Collection<UserRole> getRoles() {
+    public Set<UserRole> getRoles() {
         return roles;
     }
 
-    public void setRoles(Collection<UserRole> roles) {
+    public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
     }
 }

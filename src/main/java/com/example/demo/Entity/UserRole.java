@@ -2,7 +2,8 @@ package com.example.demo.Entity;
 
 
 import javax.persistence.*;
-import java.util.Collection;
+
+import java.util.Set;
 
 @Entity
 public class UserRole {
@@ -16,7 +17,7 @@ public class UserRole {
 
 
     @ManyToMany(mappedBy = "roles",fetch=FetchType.LAZY)
-    private Collection<User> users;
+    private Set<User> users;
 
     public UserRole(String role) {
         this.role = role;
@@ -41,11 +42,11 @@ public class UserRole {
         this.role = role;
     }
 
-    public Collection<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Collection<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 }

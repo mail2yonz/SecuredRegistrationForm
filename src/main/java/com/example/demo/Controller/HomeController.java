@@ -24,6 +24,24 @@ public class HomeController {
     private UserRepository userRepository;
 
 
+    @RequestMapping("/")
+    public String index(){
+        return "index";
+    }
+
+    @RequestMapping("/login")
+    public String login( )
+    {
+        return "login";
+    }
+
+    //
+    @RequestMapping("/secure")
+    public String secure()
+    {
+        return "secure";
+    }
+
     @RequestMapping(value="/register",method= RequestMethod.GET)
     public String showRegistrationPage(Model model)
     {
@@ -89,21 +107,5 @@ public class HomeController {
 
 
 
-    @RequestMapping("/")
-    public String index(){
-        return "index";
-    }
 
-    @RequestMapping("/login")
-    public String login( )
-    {
-        return "login";
-    }
-
-//
-    @RequestMapping("/secure")
-    public String secure()
-    {
-        return "secure";
-    }
 }

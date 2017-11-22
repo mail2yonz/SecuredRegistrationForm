@@ -9,6 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class DataLoader implements CommandLineRunner{
@@ -35,13 +37,20 @@ public class DataLoader implements CommandLineRunner{
 
         User user = new User ("yonatan@gmail.com","password","yonatan","Mengesha",true,"user");
 
-        user.setRoles ( Arrays.asList ( userRole) );
+        Set<UserRole> userRoleSet = new HashSet<> (  );
+
+        userRoleSet.add ( userRole );
+        user.setRoles (userRoleSet );
 
         userRepository.save ( user );
 
         User user2 = new User ("yonatan@gmail.com","password","yonatan","Mengesha",true,"admin");
 
-        user2.setRoles ( Arrays.asList ( adminRole ) );
+        Set<UserRole> userRoleSet1 = new HashSet<> (  );
+
+        userRoleSet1.add ( adminRole );
+//        user.setRoles (userRoleSet );
+        user2.setRoles ( userRoleSet1 );
 
         userRepository.save ( user2 );
 

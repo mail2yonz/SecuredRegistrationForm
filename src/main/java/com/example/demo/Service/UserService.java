@@ -1,12 +1,15 @@
 package com.example.demo.Service;
 
 import com.example.demo.Entity.User;
+import com.example.demo.Entity.UserRole;
 import com.example.demo.Repository.RoleRepository;
 import com.example.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -39,14 +42,20 @@ public class UserService {
 
     public void saveUser(User user)
     {
-        user.setRoles ( Arrays.asList ( roleRepository.findByRole ( "USER" ) ) );
+        Set<UserRole> userRoleSet= new HashSet<> (  );
+
+        userRoleSet.add (  roleRepository.findByRole ( "USER" ));
+        user.setRoles (  userRoleSet  );
         user.setEnabled ( true );
         userRepository.save ( user );
     }
 
     public void saveAdmin(User user)
     {
-        user.setRoles ( Arrays.asList ( roleRepository.findByRole ( "ADMIN" ) ) );
+
+        Set<UserRole>  userRoleSet= new HashSet<> (  );
+        userRoleSet.add ( roleRepository.findByRole ( "ADMIN" ) );
+        user.setRoles (  userRoleSet );
         user.setEnabled ( true );
         userRepository.save ( user );
     }
